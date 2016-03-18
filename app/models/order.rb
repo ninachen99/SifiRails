@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
 	belongs_to :showtime
 	has_one :movie, through: :showtime
 
-	validates :first_name, :last_name, :age, :email, :credit_card, :expiration, :showtime_id, :order_quantity, presence: true
+	validates :first_name, :last_name, :age, :email, :credit_card, :expiration, :showtime_id, :movie_id, :order_quantity, presence: true
 	validate :order_quantity, if: :orders_sold_out?
 	#validate :age, if: :age_restriction?
     
