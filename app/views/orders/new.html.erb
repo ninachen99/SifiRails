@@ -21,7 +21,8 @@
           <%= f.text_field :expiration, :placeholder => "expiration date" %>
           <%= f.label :order_quantity %>
           <%= f.text_field :order_quantity, :placeholder => "Quantity" %>
-          <!--need to fix, not getting id values-->
+          
+          <!--need to fix, not getting id values correctly-->
           <%= f.hidden_field :movie_id, :value => Movie.select("id") %>
 
           <%= f.label :showtime_id %>
