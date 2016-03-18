@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
 	validate :order_quantity, if: :orders_sold_out?
 	#validate :age, if: :age_restriction?
     
+     #order_total = Order.where("showtime_id = ?", params[:orders]).count
+    
     def order_total
        puts Order.where("showtime_id", self.showtime_id).count()
        return Order.where("showtime_id", self.showtime_id).count()
