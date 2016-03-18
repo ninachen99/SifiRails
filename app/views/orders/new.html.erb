@@ -22,11 +22,12 @@
           <%= f.label :order_quantity %>
           <%= f.text_field :order_quantity, :placeholder => "Quantity" %>
           
-          <!--need to fix, not getting id values correctly-->
-          <%= f.hidden_field :movie_id, value: params[:movie_id] %>
+          <!--not showing the movie and showtime id, it is nil-->
+          <%= f.label :movie_id %>
+          <%= f.text_field :movie_id, :value => {id: params[:movie_id]} %>
 
           <%= f.label :showtime_id %>
-          <%= f.text_field :showtime_id, value: params[:showtime_id] %>
+          <%= f.text_field :showtime_id, :value => {id: params[:showtime_id]} %>
          <br>
           <%= f.submit "Checkout", :class => "btn btn-primary" %> 
         </ul>
