@@ -1,0 +1,15 @@
+<% if @order.errors.any? %>
+
+  	<div class="alert alert-danger">
+  		The form contains <%= pluralize(@order.errors.count, "error") %>.
+  	</div>
+  		
+  		<% @order.errors.full_messages.each do |msg| %>
+  	<div id="error_details">
+  		<li class="order-error-msg"><%= msg %></li>
+  	</div>
+  
+<% end %>
+<% end %>
+
+<br>

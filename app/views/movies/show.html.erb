@@ -1,0 +1,29 @@
+<div class="main actor-show">
+  <div class="container">
+    <!-- Display an moive's info here -->
+    <div class="actor">
+      <%= image_tag @movie.image %>
+      <div class="info">
+        <h3 class="actor-name"><%= @movie.title %></h3>
+        <br>
+        <p> <%= @movie.plot %></p>
+
+        <h3 class="actor-bio"> Showtime: </h3>
+          <% @showtimes.each do |showing| %>
+          <br>
+          <!--the showtime is not showing here, fix it -->  
+           <p class="actor-name">
+             <%= showing.hour %> <span>=></span> 
+             <button class="btn btn-default">
+              <%= link_to "Buy Ticket", "/orders/new?showtimes.showtime.id" %>
+             </button>
+           </p>
+
+         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

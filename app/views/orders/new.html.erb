@@ -1,0 +1,36 @@
+<br>
+<div class="container">
+      <div>
+        <h2>Buy Ticket</h2>
+        <br>
+        <!-- order form  -->
+        <%= form_for(@order) do |f| %>
+        <ul id="order-form">
+         <%= render 'shared/error_messages' %>
+         <%= f.label :age %>
+         <%= f.text_field :age, :placeholder => "Your age" %>
+         <%= f.label :first_name %> 
+         <%= f.text_field :first_name, :placeholder => "First name" %>
+         <%= f.label :last_name %>
+         <%= f.text_field :last_name, :placeholder => "Last name" %>
+          <%= f.label :email %>
+          <%= f.text_field :email, :placeholder => "Email" %>
+          <%= f.label :credit_card %>
+          <%= f.text_field :credit_card, :placeholder => "Credit card number" %>
+          <%= f.label :expiration %>
+          <%= f.text_field :expiration, :placeholder => "expiration date" %>
+          <%= f.label :order_quantity %>
+          <%= f.text_field :order_quantity, :placeholder => "Quantity" %>
+          <!--need to fix, not getting id values-->
+          <%= f.hidden_field :movie_id, :value => Movie.select("id") %>
+
+          <%= f.label :showtime_id %>
+          <%= f.text_field :showtime_id, :value => Showtime.select("id") %>
+         <br>
+          <%= f.submit "Checkout", :class => "btn btn-primary" %> 
+        </ul>
+        <% end %> 
+        <br>
+        
+      </div>
+</div>

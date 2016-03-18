@@ -1,0 +1,24 @@
+<div class="hero">
+  <div class="container">
+    <h2>Black Theater</h2>
+    <p>Our special effects theaters offer you the best movie experiences. </p>
+    <a href="#">Read More</a>
+  </div>
+</div>
+<br>
+
+<div class="main container">
+  <div>
+    <div>
+        <% @movies.each do |movie| %>
+        <div class="actor col-xs-2">
+          <div><%= image_tag movie.image %></div>
+          <h3><%= movie.title %></h3>
+          <p><%= movie.release_year %></p>
+          <p><button class="btn btn-default"><%= link_to "Showtimes", movie_path(movie) %></button></p>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
