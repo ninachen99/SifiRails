@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-	belongs_to :showtime
+	belongs_to :showtime, counter_cache: true
 	has_one :movie, through: :showtime
 
 	validates :first_name, :last_name, :age, :email, :credit_card, :expiration, :showtime_id, :movie_id, :order_quantity, presence: true
@@ -9,8 +9,8 @@ class Order < ActiveRecord::Base
      #order_total = Order.where("showtime_id = ?", params[:orders]).count
     
     def order_total
-       puts Order.where("showtime_id", self.showtime_id).count()
-       return Order.where("showtime_id", self.showtime_id).count()
+       puts Order.where("showtime_id", self.showtime_id).sum("order_quantity")
+       return Order.where("showtime_id", self.showtime_id).sum("order_quantity")
        
     end 
 
