@@ -22,7 +22,7 @@
           <%= f.label :order_quantity %>
           <%= f.text_field :order_quantity, :placeholder => "Quantity" %>
           
-          <!--not showing the movie and showtime id, it is nil-->
+          <!--not showing the movie and showtime id, it is nil, how to get the showtime id before the form is submitted??-->
           <%= f.label :movie_id %>
           <%= f.text_field :movie_id, :value => {id: params[:movie_id]} %>
 

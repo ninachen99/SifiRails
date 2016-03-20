@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/orders/new' => 'orders#new'
 
   post 'orders' => 'orders#create'
+
+  resources :showtimes
+  get '/showtimes/:id' => 'showtimes#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

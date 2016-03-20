@@ -5,8 +5,12 @@ class Order < ActiveRecord::Base
 	validates :first_name, :last_name, :age, :email, :credit_card, :expiration, :showtime_id, :movie_id, :order_quantity, presence: true
 	validate :order_quantity, if: :orders_sold_out?
 	#validate :age, if: :age_restriction?
-    
-     #order_total = Order.where("showtime_id = ?", params[:orders]).count
+    # find order sum:  Showtime.find(params[:id]).orders.sum("order_quantity") 
+    # find the seats:
+    # theaterId = Showtime.find(params[:id]).theater_id
+    # Theater.find(theaterId).seats
+
+    #order_total = Order.where("showtime_id = ?", params[:orders]).count
     
     def order_total
        puts Order.where("showtime_id", self.showtime_id).sum("order_quantity")
