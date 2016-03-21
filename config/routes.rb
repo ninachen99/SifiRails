@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root 'movies#index'
-  get '/movies' => 'movies#index'
-  get '/movies/:id' => 'movies#show', as: :movie
   resources :movies
+  get '/movies' => 'movies#index'
+  get '/movies/:id' => 'movies#show'
   
+  get 'movies/new' => 'movies#new', as: :add_movie
+  post 'movies' => 'movies#create'
+  delete '/movies/:id' => 'movies#destroy'
 
   resources :orders
   get '/orders' => 'orders#index'
@@ -13,6 +16,10 @@ Rails.application.routes.draw do
 
   resources :showtimes
   get '/showtimes/:id' => 'showtimes#show'
+
+
+ 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160317154205) do
     t.string   "release_year"
     t.string   "plot"
     t.integer  "theater_id"
+    t.integer  "showtime_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

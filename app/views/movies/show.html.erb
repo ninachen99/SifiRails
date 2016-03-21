@@ -3,10 +3,14 @@
     <!-- Display an moive's info here -->
     <div class="actor">
       <%= image_tag @movie.image %>
+     
+
       <div class="info">
         <h3 class="actor-name"><%= @movie.title %></h3>
         <br>
         <p> <%= @movie.plot %></p>
+
+        <button class="btn btn-default"> <%= link_to 'Delete Movie', @movie, method: :delete, data: {confirm: "You sure?"} %></button>
 
         <h3 class="actor-bio"> Showtime: </h3>
           <% @showtimes.each do |showing| %>
@@ -18,8 +22,9 @@
               <%= link_to "Buy Ticket", "/orders/new?/showtimes/:id" %>
              </button>
            </p>
-
          <% end %>
+
+
       </div>
     </div>
   </div>

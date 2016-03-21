@@ -1,0 +1,28 @@
+<div class="add-movie">
+  <h2>Add Movies</h2>
+  <br>
+		<%= form_for(@movie) do |f| %>
+		<%= render 'shared/movie_error_messages' %>
+		<br>
+		<ul>
+		  <%= f.label :image %>
+		  <%= f.file_field :image, class:"form-control" %>
+          <%= f.label :title %>
+		  <%= f.text_field :title, class:"form-control" %>
+		  <%= f.label :release_year %>
+		  <%= f.text_field :release_year, class:"form-control" %>
+
+		  <%= f.label :plot %>
+		  <%= f.text_field :plot, class:"form-control" %>
+
+		  <%= f.label :theater_id %>
+		  <%= f.text_field :theater_id, class:"form-control" %>
+
+		  <%= f.label :showtime_id %>
+		  <%= f.text_field :showtime_id, class:"form-control"%>
+		</ul>
+		  <br>
+		  <%= f.submit "Add Movie", class:"btn btn-primary" %>
+		  <% end %>
+	
+</div>
