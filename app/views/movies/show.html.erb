@@ -3,8 +3,6 @@
     <!-- Display an moive's info here -->
     <div class="actor">
       <%= image_tag @movie.image %>
-     
-
       <div class="info">
         <h3 class="actor-name"><%= @movie.title %></h3>
         <br>
@@ -19,12 +17,10 @@
            <p class="actor-name">
              <%= showing.hour %> <span>=></span> 
              <button class="btn btn-default">
-              <%= link_to "Buy Ticket", "/orders/new?/showtimes/:id" %>
+              <%= link_to('Buy Ticket', controller: 'orders', action: 'new', id: showing) %>
              </button>
            </p>
          <% end %>
-         
-
       </div>
     </div>
   </div>
