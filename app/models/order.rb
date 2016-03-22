@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
     # Theater.find(theaterId).seats
 
     #order_total = Order.where("showtime_id = ?", params[:orders]).count
-=begin  
+ 
     def order_total
        puts "9" * 50
        total = Showtime.find(params[:id]).orders.sum("order_quantity")
@@ -35,7 +35,7 @@ class Order < ActiveRecord::Base
     		errors.add(:order_quantity, "All seats are sold out for this movie.")
     	end 
     end 
-=end 
+
     def age_restriction?
     	order = Order.new
     	user_age = order.age.to_i
