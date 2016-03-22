@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-	belongs_to :showtime, counter_cache: true
+	belongs_to :showtime
 	has_one :movie, through: :showtime
 
 	validates :first_name, :last_name, :age, :email, :credit_card, :expiration, :showtime_id, :movie_id, :order_quantity, presence: true
@@ -21,6 +21,7 @@ class Order < ActiveRecord::Base
     end
 
     def order_limit
+        puts "9" * 50
         theaterId = Showtime.find(params[:id]).theater_id
         available_seats = Theater.find(theaterId).seats
         #newId = Showtime.find_by("id", self.id).theater_id
