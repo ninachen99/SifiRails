@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		if @order.save
+			puts "Debug information"
 		   flash[:notice] = "Thank you for your order."
 		   redirect_to '/movies'
 		else 
