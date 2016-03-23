@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+    #attr_accessible :movie_id, :showtime_id
+    #before_save :override_field
+
 	belongs_to :showtime
 	has_one :movie, through: :showtime
 
@@ -44,4 +47,13 @@ class Order < ActiveRecord::Base
     		errors.add(:age, "You must be 18 or older to make a purchase.")
     	end 
     end 
+=begin
+    private
+
+    def override_field
+        if self.movie_id.nil?
+            self.movie_id = showtime.movie_id
+        end 
+    end 
+=end
 end
