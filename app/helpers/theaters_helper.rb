@@ -1,0 +1,4 @@
+module TheatersHelper
+
+	
+end
