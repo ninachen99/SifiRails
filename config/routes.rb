@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
   resources :showtimes
   get '/showtimes/:id' => 'showtimes#show'
-
+  get 'showtimes/new' => 'showtimes#new'
+  post 'showtimes' => 'showtimes#create'
 
  
 

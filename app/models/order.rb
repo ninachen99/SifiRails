@@ -11,23 +11,26 @@ class Order < ActiveRecord::Base
     def order_total
        puts "9" * 50
        puts Order.where("showtime_id", self.showtime_id).sum("order_quantity")
+       puts self # log looks like: <Order:0x007fcfae7a8c50>
        return Order.where("showtime_id", self.showtime_id).sum("order_quantity")
     end
 
     # find the theater seats capacity:
     def order_limit
-        puts "&" * 50
-        showing = self.showtime_id.to_i
-        puts showing
-        show_room = Showtime.find(showing).theater_id.to_i
-        puts show_room
-        available_seats = Theater.find(show_room).seats
-        puts available_seats 
-        return available_seats
+        if self.showtime_id?
+            puts "&" * 50
+            showing = self.showtime_id.to_i
+            puts showing
+            show_room = Showtime.find(showing).theater_id.to_i
+            puts show_room
+            available_seats = Theater.find(show_room).seats
+            puts available_seats 
+            return available_seats
+        end 
     end 
 
     def orders_sold_out?
-    	if order_total >= order_limit
+    	if order_total >= order_limit.to_i
             puts "$total" * 100
             puts order_total
     		errors.add(:order_quantity, "All seats are sold out for this movie.")
@@ -36,9 +39,10 @@ class Order < ActiveRecord::Base
 
     def age_restriction?
     	user_age = self.age 
-        if user_age <= 18
+        if user_age != nil
+         if user_age <= 18
     	  errors.add(:age, "You must be 18 or older to make a purchase.")
-        end 
+         end 
+        end
     end 
-
 end

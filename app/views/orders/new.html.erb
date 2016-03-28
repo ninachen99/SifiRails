@@ -24,10 +24,10 @@
           
           <!--not showing the movie and showtime id, it is nil, how to get the showtime id before the form is submitted??, need a model action?-->
           <%= f.label :movie_id %>
-          <%= f.text_field(:movie_id, :value => params[:movie_id]) %>
+          <%= text_field_tag 'order[movie_id]', f.object.movie_id %>
 
           <%= f.label :showtime_id %>
-          <%= f.text_field(:showtime_id, :value => params[:showtime_id]) %>
+          <%= text_field_tag 'order[showtime_id]', f.object.showtime_id %>
          <br>
           <%= f.submit "Checkout", :class => "btn btn-primary" %> 
         </ul>
