@@ -15,6 +15,8 @@ class Order < ActiveRecord::Base
        #my_order = Order.where(showtime_id: self.showtime_id)
        my_order = Order.where(showtime_id: self.showtime_id).sum("order_quantity")
        #total = my_order.map {|o| o['order_quantity']}.reduce(0, :+)
+       # total = my_order.inject(0) { |sum, self.order_quantity| sum + self.order_quantity }
+
        my_total += my_order
        puts my_order
        puts self
