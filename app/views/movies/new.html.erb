@@ -6,23 +6,32 @@
 		<br>
 		<ul>
 		  <%= f.label :image %>
-		  <%= f.text_field :image, class:"form-control" %>
+		  <%= f.text_field :image, :placeholder => "Image url", class:"form-control" %>
           <%= f.label :title %>
-		  <%= f.text_field :title, class:"form-control" %>
+		  <%= f.text_field :title, :placeholder => "Movie title", class:"form-control" %>
 		  <%= f.label :release_year %>
-		  <%= f.text_field :release_year, class:"form-control" %>
+		  <%= f.text_field :release_year, :placeholder => "Release Year", class:"form-control" %>
 
 		  <%= f.label :plot %>
-		  <%= f.text_field :plot, class:"form-control" %>
+		  <%= f.text_field :plot, :placeholder => "Plot", class:"form-control" %>
 
 		  <%= f.label :theater_id %>
-		  <%= f.text_field :theater_id, class:"form-control" %>
-
+		  <%= f.text_field :theater_id, :placeholder => "Theater ID", class:"form-control" %>
+         <br>
 		  <%= f.label :showtime_id %>
-		  <%= f.text_field :showtime_id, class:"form-control"%>
+		  <%= f.text_field :showtime_id, :placeholder => "Showtime ID", class:"form-control" %>
+		  <br>
+		 <!-- how to make this to create showtime? -->
+		  <%= select_month(Time.now)%>
+          <%= select_day(Time.now) %>
+          <%= select_hour(Time.now) %>
+          <%= select_year(2016) %>
+         
 		</ul>
 		  <br>
 		  <%= f.submit "Add Movie", class:"btn btn-primary" %>
-		  <% end %>
+	<% end %>
 	
+	
+          
 </div>

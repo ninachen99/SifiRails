@@ -9,22 +9,22 @@ class Order < ActiveRecord::Base
 	validate :age, if: :age_restriction?
     
     # the sum only sum up the previous orders, without the most current one.
+  
     def order_total
        puts "9" * 50
-       my_total = 0
-       #my_order = Order.where(showtime_id: self.showtime_id)
-       my_order = Order.where(showtime_id: self.showtime_id).sum("order_quantity")
+       
+       my_order_total = Order.where(showtime_id: self.showtime_id).sum(:order_quantity)
+      
+       #my_order_total = Order.where(showtime_id: self.showtime_id).group(:showtime_id).sum(:order_quantity)
+
        #total = my_order.map {|o| o['order_quantity']}.reduce(0, :+)
        # total = my_order.inject(0) { |sum, self.order_quantity| sum + self.order_quantity }
-
-       my_total += my_order
-       puts my_order
+       
+       puts my_order_total
        puts self
        puts self.showtime_id # get the showtime_id for new order.
-       puts my_total
-       #puts total
-       #return total
-       return my_total
+       
+       return my_order_total
     end
 
     # find the theater seats capacity:
@@ -42,14 +42,16 @@ class Order < ActiveRecord::Base
     end 
 
     def orders_sold_out?
-        
-    	 if order_total >= order_limit.to_i
+       order_total
+    	 unless order_total >= order_limit
             puts "$total" * 100
             puts order_total
     		errors.add(:order_quantity, "All seats are sold out for this movie.")
+       else
+        puts "Order created."
     	 end  
     end 
-
+  
     def age_restriction?
     	user_age = self.age 
         if user_age != nil
