@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
   
     def order_total
        puts "9" * 50
-
+       #if self.showtime_id.present?
        my_order = Order.where(showtime_id: self.showtime_id)
        #my_order_total = Order.where(showtime_id: self.showtime_id).group(:showtime_id).sum(:order_quantity) => doesn't work
        my_order_total = my_order.sum(:order_quantity) + self.order_quantity
