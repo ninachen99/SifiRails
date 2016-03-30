@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
 
        my_order = Order.where(showtime_id: self.showtime_id)
        #my_order_total = Order.where(showtime_id: self.showtime_id).group(:showtime_id).sum(:order_quantity) => doesn't work
-       my_order_total = my_order.sum(:order_quantity) 
+       my_order_total = my_order.sum(:order_quantity) + self.order_quantity
        #total = my_order.map {|o| o['order_quantity']}.reduce(0, :+)
        # total = my_order.inject(0) { |sum, self.order_quantity| sum + self.order_quantity }
        

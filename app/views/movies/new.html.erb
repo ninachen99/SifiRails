@@ -22,16 +22,14 @@
 		  <%= f.text_field :showtime_id, :placeholder => "Showtime ID", class:"form-control" %>
 		  <br>
 		 <!-- how to make this to create showtime? -->
-		  <%= select_month(Time.now)%>
+		
+		  <%= select_month(Time.now) %>
           <%= select_day(Time.now) %>
           <%= select_hour(Time.now) %>
           <%= select_year(2016) %>
-         
+        
 		</ul>
 		  <br>
 		  <%= f.submit "Add Movie", class:"btn btn-primary" %>
 	<% end %>
-	
-	
-          
 </div>
