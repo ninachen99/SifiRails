@@ -18,12 +18,14 @@
        </tr>
     </table>
     <% end %>
-    
+    <div>
     <!--Add movie-->
     <h2>Add Movies</h2>
     <button class="btn btn-default"><%= link_to "Add Movie", add_movie_path(@movie) %></button>
-  <div>
-  </div>
-
+    </div>
+    <br>
+    <div>
+      <button class="btn btn-default"><%= link_to "Add Showtime", add_showtime_path(@showtime) %></button>
+    </div>
   </div>
 </div>

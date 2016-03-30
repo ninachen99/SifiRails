@@ -4,9 +4,8 @@
   		The form contains <%= pluralize(@movie.errors.count, "error") %>.
   	</div>
   	
-  		<% @movie.errors.full_messages.each do |msg| %>
-  		<li class="movie-error"><%= msg %></li>
-  
-  
-<% end %>
+	<% @movie.errors.full_messages.each do |msg| %>
+	<li class="movie-error"><%= msg %></li>
+
+    <% end %>
 <% end %>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :showtimes
   get '/showtimes/:id' => 'showtimes#show'
-  get 'showtimes/new' => 'showtimes#new'
+  get 'showtimes/new' => 'showtimes#new', as: :add_showtime
   post 'showtimes' => 'showtimes#create'
 
  

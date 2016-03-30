@@ -1,0 +1,39 @@
+<div class="add-movie">
+  <h2>Add Showtimes</h2>
+  <br>
+		<%= form_for(@showtime) do |f| %>
+		<%= render 'shared/showtime_error_messages' %>
+		<br>
+		<ul>
+		  <%= f.label :month %>
+		  <%= f.text_field :month, :placeholder => "Month", class:"form-control" %>
+          <%= f.label :date %>
+		  <%= f.text_field :date, :placeholder => "Date", class:"form-control" %>
+		  <%= f.label :hour %>
+		  <%= f.text_field :hour, :placeholder => "Hour", class:"form-control" %>
+
+		  <%= f.label :year %>
+		  <%= f.text_field :year, :placeholder => "Year", class:"form-control" %>
+
+		  <%= f.label :movie_id %>
+		  <%= f.text_field :movie_id, :placeholder => "Moive ID", class:"form-control" %>
+         <br>
+		  <%= f.label :theater_id %>
+		  <%= f.text_field :theater_id, :placeholder => "Theater ID", class:"form-control" %>
+		  <br>
+		</ul>
+		 
+		  <!--
+		 <div>
+		  <%= select_month(Time.now) %>
+          <%= select_day(Time.now) %>
+          <%= select_hour(Time.now) %>
+          <%= select_year(2016) %>
+        </div>
+        -->
+        <br>
+		<div>
+		  <%= f.submit "Add Showtime", class:"btn btn-primary" %>
+		</div>
+	<% end %>
+</div>

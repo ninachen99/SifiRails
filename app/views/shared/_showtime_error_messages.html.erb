@@ -1,0 +1,11 @@
+<% if @showtime.errors.any? %>
+  
+  	<div class="alert alert-danger">
+  		The form contains <%= pluralize(@showtime.errors.count, "error") %>.
+  	</div>
+  	
+  	<% @showtime.errors.full_messages.each do |msg| %>
+  	<li class="movie-error"><%= msg %></li>
+ 
+    <% end %>
+<% end %>
