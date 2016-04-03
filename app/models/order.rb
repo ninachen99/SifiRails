@@ -11,25 +11,28 @@ class Order < ActiveRecord::Base
     # the sum only sum up the previous orders, without the most current one.
   
     def order_total
-       #if self.showtime_id.present?
-       my_order = Order.where(showtime_id: self.showtime_id)
-       #my_order_total = my_order.group(:showtime_id).sum(:order_quantity) 
-       #my_order_total = my_order.sum(:order_quantity) + self.order_quantity # works
-       my_order_total = my_order.pluck(:order_quantity).inject(:+) + self.order_quantity
-       #total = my_order.map {|o| o['order_quantity']}.reduce(0, :+)
-       # total = my_order.inject(0) { |sum, self.order_quantity| sum + self.order_quantity }
-       puts "all-orders" * 20
-       puts my_order_total
-       puts self
-       puts "showid" * 50
-       puts self.showtime_id # get the showtime_id for new order.
-       return my_order_total
+      if self.showtime_id.present?
+         my_order = Order.where(showtime_id: self.showtime_id)
+         #my_order_total = my_order.group(:showtime_id).sum(:order_quantity) 
+         #my_order_total = my_order.sum(:order_quantity) + self.order_quantity # works
+         my_order_total = my_order.pluck(:order_quantity).inject(:+) + self.order_quantity
+         #total = my_order.map {|o| o['order_quantity']}.reduce(0, :+)
+         # total = my_order.inject(0) { |sum, self.order_quantity| sum + self.order_quantity }
+         puts "all-orders" * 20
+         puts my_order_total
+         puts self
+         puts "showid" * 50
+         puts self.showtime_id # get the showtime_id for new order.
+         return my_order_total 
+      else
+         puts "id is nil"
+      end
     end
      
 
     # find the theater seats capacity:
     def order_limit
-        if self.showtime_id?
+        if self.showtime_id.present?
             puts "showid" * 50
             showing = self.showtime_id.to_i
             puts showing
@@ -38,18 +41,23 @@ class Order < ActiveRecord::Base
             available_seats = Theater.find(show_room).seats
             puts available_seats 
             return available_seats
+        else
+          puts "id is nil."
         end 
-        order_limit
     end 
 
     def orders_sold_out?
-    	if order_total > order_limit.to_i
-          puts "$total" * 50
-          puts order_total
-    		  errors.add(:order_quantity, "All seats are sold out for this movie.")
-      else
-          puts "Order created."
-    	end  
+      if self.showtime_id.present?
+      	if order_total > order_limit.to_i
+            puts "$total" * 50
+            puts order_total
+      		  errors.add(:order_quantity, "All seats are sold out for this movie.")
+        else
+            puts "Order created."
+      	end 
+      else 
+        puts 'id is nil'
+      end 
     end 
   
     def age_restriction?
