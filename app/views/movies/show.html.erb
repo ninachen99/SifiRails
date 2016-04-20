@@ -17,7 +17,7 @@
            <p class="actor-name">
              <%= showing.hour %> <span>=></span> 
              <button class="btn btn-default">
-              <%= link_to('Buy Ticket', controller: 'orders', action: 'new', id: showing) %>
+              <%= link_to('Buy Ticket', controller: 'orders', action: 'new', showtime_id: showing) %>
              </button>
            </p>
          <% end %>

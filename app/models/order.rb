@@ -14,8 +14,8 @@ class Order < ActiveRecord::Base
       if self.showtime_id.present?
          my_order = Order.where(showtime_id: self.showtime_id)
          #my_order_total = my_order.group(:showtime_id).sum(:order_quantity) 
-         #my_order_total = my_order.sum(:order_quantity) + self.order_quantity # works
-         my_order_total = my_order.pluck(:order_quantity).inject(:+) + self.order_quantity
+         my_order_total = my_order.sum(:order_quantity) + self.order_quantity # works
+         #my_order_total = my_order.pluck(:order_quantity).inject(:+) + self.order_quantity
          #total = my_order.map {|o| o['order_quantity']}.reduce(0, :+)
          # total = my_order.inject(0) { |sum, self.order_quantity| sum + self.order_quantity }
          puts "all-orders" * 20
